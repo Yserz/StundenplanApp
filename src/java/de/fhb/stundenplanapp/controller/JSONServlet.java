@@ -6,6 +6,8 @@ package de.fhb.stundenplanapp.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import de.fhb.stundenplanapp.data.Fachbereich;
+import de.fhb.stundenplanapp.data.Gruppen;
+import de.fhb.stundenplanapp.data.Semester;
+import de.fhb.stundenplanapp.data.Studiengänge;
+import de.fhb.stundenplanapp.data.Tage;
+import de.fhb.stundenplanapp.data.Veranstaltungen;
+import de.fhb.stundenplanapp.manager.FindStudiengänge;
 
 /**
  *
@@ -104,7 +114,7 @@ public class JSONServlet extends HttpServlet {
 				fachbereich.append("items",semester);
 				
 				root.append("items", fachbereich);
-				 */
+				 
 				//root.put("date", new Date(System.currentTimeMillis()));
 				//root.put("url", "http://test.de/");
 				
@@ -192,6 +202,66 @@ public class JSONServlet extends HttpServlet {
 				
 				root.append("items", fachbereich);
 				//json.append("comment", new JSONObject(comment));
+				 */
+				
+				List<Fachbereich> fbs = new FindStudiengänge().getFachbereiche();
+				
+				JSONObject fachbereich;
+				JSONObject studiengang;
+				JSONObject semester;
+				JSONObject gruppe;
+				JSONObject tag;
+				JSONObject veranstaltung;
+				
+				for (Fachbereich fb : fbs) {
+					fachbereich = new JSONObject();
+					fachbereich.put("name", fb.getName());
+					fachbereich.put("model", "Fachbereich");
+					fachbereich.put("leaf", false);
+					fachbereich.put("leaf", false);
+					for (Studiengänge st : fb.getStudiengaenge()) {
+						studiengang = new JSONObject();
+						studiengang.put("name", st.getName());
+						studiengang.put("model", "Studiengang");
+						studiengang.put("leaf", false);
+						studiengang.put("link", st.getLink());
+						for (Semester se : st.getSemester()) {
+							semester = new JSONObject();
+							semester.put("name", se.getName());
+							semester.put("model", "Semester");
+							semester.put("leaf", false);
+							for (Gruppen gr : se.getGruppen()) {
+								gruppe = new JSONObject();
+								gruppe.put("name", gr.getName());
+								gruppe.put("model", "Gruppe");
+								gruppe.put("leaf", false);
+								gruppe.put("link", gr.getLink());
+								for (Tage ta : gr.getTage()) {
+									tag = new JSONObject();
+									tag.put("name", ta.getWochentag());
+									tag.put("model", "Tag");
+									tag.put("leaf", false);
+									for (Veranstaltungen ver : ta.getVeranstaltungen()) {
+										veranstaltung = new JSONObject();
+										veranstaltung.put("name", ver.getName());
+										veranstaltung.put("model", "Kurs");
+										veranstaltung.put("leaf", true);
+										veranstaltung.put("bemerkung", ver.getBemerkung());
+										veranstaltung.put("startTime", ver.getStartTime());
+										veranstaltung.put("endTime", ver.getEndTime());
+										tag.append("item", veranstaltung);
+									}
+									gruppe.append("item", tag);
+								}
+								semester.append("item", gruppe);										
+							}
+							studiengang.append("item", semester);
+						}
+						fachbereich.append("item", studiengang);
+					}
+					root.append("item", fachbereich);
+				}
+				
 			} catch (JSONException e) {
 				//Konnte JSON nicht packen!
 				e.printStackTrace();
