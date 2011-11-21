@@ -4,7 +4,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
     store: App.stores.fachrichtungStoreTree,
 	displayField: 'name',
 	styleHtmlContent: true,
-    getDetailCard: function(item, parent) {
+    /*getDetailCard: function(item, parent) {
         var itemData = item.attributes.record.data,
         parentData = parent.attributes.record.data,
         detailCard = new Ext.Panel({
@@ -15,7 +15,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
         detailCard.update(itemData);
         this.backButton.setText(parentData.name);
         return detailCard;
-    },
+    },*/
 	getItemTextTpl: function() {
         var tplConstructor = '<h2>{name}</h2>' +
             '<tpl if="model === \'Fachbereich\'">'+
@@ -46,40 +46,5 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
                 '</div>' +
             '</tpl>';
         return tplConstructor;
-    }/*,
-    initComponent: function () {
-		
-        this.newButton = new Ext.Button({
-            text: 'New',
-            ui: 'action',
-            handler: this.onNewWindow,
-            scope: this
-        });
-		
-		this.backButton = new Ext.Button({
-			ui: 'back',
-			text: 'Back',
-			handler: this.onGoBack,
-			scope: this
-		});
-
-        this.topToolbar = new Ext.Toolbar({
-            title: 'My Notes',
-            items: [
-				this.backButton,
-                { xtype: 'spacer' },
-            ]
-        });
-
-        this.dockedItems = [this.topToolbar];
-
-		
-        App.views.TestTree.superclass.initComponent.call(this);
-    },
-    onGoBack: function () {
-        Ext.dispatch({
-            controller: App.controllers.appController,
-            action: 'back'
-        });
-    }*/
+    }
 });

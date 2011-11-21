@@ -1,19 +1,20 @@
 
 App.stores.fachrichtungStoreTree = new Ext.data.TreeStore({
     model: 'ListModelTree',
-	//model: 'ListItem',
-	//defaultRootProperty: 'data',
-    /*sorters: [{
+	sortOnLoad: true,
+	/*folderSort: true,
+	sortRoot: 'name',*/
+    sorters: [{
         property: 'name',
-        direction: 'ASC'
-    }],*/
-    /*getGroupString: function (record) {
+        direction: 'DESC'
+    }],
+    getGroupString: function (record) {
         if (record && record.data.name) {
             return record.get('name')[0];
         } else {
             return '';
         }
-    },*/
+    },
 	proxy: {
         type: 'ajax',
 		//id: 'FachrichtungStoreTree',
@@ -27,3 +28,4 @@ App.stores.fachrichtungStoreTree = new Ext.data.TreeStore({
     }
 });
 
+App.stores.fachrichtungStoreTree.sort();

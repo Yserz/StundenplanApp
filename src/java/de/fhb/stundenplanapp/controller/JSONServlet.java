@@ -143,6 +143,29 @@ public class JSONServlet extends HttpServlet {
 				tag.put("anzKurse", 1);
 				tag.put("leaf", false);
 				
+				JSONObject kurs2 = new JSONObject();
+				kurs2.put("name", "BWL");
+				kurs2.put("model", "Kurs");
+				kurs2.put("url", "http://test.de/informatik/1/g1/bwl");
+				kurs2.put("dozent", "Herr Görmer");
+				kurs2.put("raum", "223");
+				kurs2.put("startTime", "1200");
+				kurs2.put("endTime", "14:00");
+				kurs2.put("leaf", true);
+				
+				tag.append("items", kurs2);
+				
+				JSONObject kurs3 = new JSONObject();
+				kurs3.put("name", "Programmieren I");
+				kurs3.put("model", "Kurs");
+				kurs3.put("url", "http://test.de/informatik/1/g1/p1");
+				kurs3.put("dozent", "Frau Schmidt");
+				kurs3.put("raum", "223");
+				kurs3.put("startTime", "500");
+				kurs3.put("endTime", "14:00");
+				kurs3.put("leaf", true);
+				
+				tag.append("items", kurs3);
 				
 				JSONObject kurs = new JSONObject();
 				kurs.put("name", "Java Enterprise Application");
@@ -150,11 +173,13 @@ public class JSONServlet extends HttpServlet {
 				kurs.put("url", "http://test.de/informatik/1/g1/jee");
 				kurs.put("dozent", "Stefan Pratsch");
 				kurs.put("raum", "223");
-				kurs.put("startTime", "8:00");
+				kurs.put("startTime", "800");
 				kurs.put("endTime", "12:00");
 				kurs.put("leaf", true);
 
 				tag.append("items", kurs);
+				
+				
 				gruppe.append("items", tag);
 				semester.append("items", gruppe);
 				fachbereich.append("items",semester);
