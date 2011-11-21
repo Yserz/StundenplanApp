@@ -1,20 +1,39 @@
 App.views.TestTree = Ext.extend(Ext.NestedList, {
     fullscreen: true,
     title: 'StundenplanApp',
-    store: 'FachrichtungStoreTree'
-    /*getDetailCard: function(item, parent) {
+    store: App.stores.fachrichtungStoreTree,
+	updateTitleText: true,
+    getDetailCard: function(item, parent) {
         var itemData = item.attributes.record.data,
         parentData = parent.attributes.record.data,
         detailCard = new Ext.Panel({
             scroll: 'vertical',
             styleHtmlContent: true,
-            tpl: ["<h2>{name}</h2>","hallo"]
+            tpl: ["<h2>{name}</h2>","{startTime} - {endTime}<br />{dozent}<br />{raum}"]
         });
         detailCard.update(itemData);
-        this.backButton.setText(parentData.text);
+        this.backButton.setText(parentData.name);
         return detailCard;
-    },*/
-/*
+    },
+	getItemTextTpl: function() {
+        var tplConstructor = '{name}' +
+            '<tpl if="model === \'Artist\'">'+
+                '<div class="metadata">' +
+                    ' {[values.items.length]} albums' +
+                '</div>' +
+            '</tpl>' +
+            '<tpl if="model === \'Album\'">'+
+                '<div class="metadata">' +
+                    ' {[values.items.length]} tracks' +
+                '</div>' +
+            '</tpl>' +
+            '<tpl if="model === \'Track\'">'+
+                '<div class="metadata">' +
+                    ' Duration: {[Math.floor(values.duration/60)]}:{[values.duration%60]}' +
+                '</div>' +
+            '</tpl>';
+        return tplConstructor;
+    }/*,
     initComponent: function () {
 		
         this.newButton = new Ext.Button({

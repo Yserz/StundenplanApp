@@ -7,21 +7,22 @@ App.views.MainView = Ext.extend(Ext.Panel, {
     initComponent: function () {
 		
         Ext.apply(App.views, {
-            test: new App.views.Test(),
-			test2: new App.views.Test2()
-			//testtree: new App.views.TestTree()
+            //test: new App.views.Test(),
+			//test2: new App.views.Test2()
+			testtree: new App.views.TestTree()
         });
 
         this.items = [
-            App.views.test,
-			App.views.test2
-			//App.views.testtree
+            //App.views.test,
+			//App.views.test2
+			App.views.testtree
         ]
 
         this.on('render', function () {
-            Ext.StoreMgr.get('FachrichtungStore').load({
+			/*
+            Ext.StoreMgr.get('FachrichtungStoreTree').load({
                 callback: function() {
-                	var store = Ext.StoreMgr.get('FachrichtungStore');
+                	var store = Ext.StoreMgr.get('FachrichtungStoreTree');
                     var fr = store.first();
                     console.log("Fachrichtung " + fr.get('name') + ":");
                     fr.semester().each(function(semester) {
@@ -39,9 +40,8 @@ App.views.MainView = Ext.extend(Ext.Panel, {
                     });
 					
                 }
-            });
+            });*/
         });
-		
 		App.views.MainView.superclass.initComponent.call(this);
     }
 });

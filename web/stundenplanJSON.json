@@ -1,68 +1,59 @@
 {
-	"data": [{
-		"name": "Informatik",
-		"url": "http://test.de/informatik",
-		"semester": [{
-			"name": "1. Semester",
-			"url": "http://test.de/informatik/1/",
-			"gruppe": [{
-				"name": "Gruppe 1",
-				"url": "http://test.de/informatik/1/g1",
-				"tag": [{
-					"name": "Montag",
-					"anzKurse": 1,
-					"kurs": [{
-						"name": "Java Enterprise Application",
-						"url": "http://test.de/informatik/g1/jee",
-						"dozent": "Stefan Pratsch",
-						"raum": 233,
-						"startTime": "8:00",
-						"endTime": "12:00"
-					}]
-				},{
-					"name": "Dienstag",
-					"anzKurse": 2,
-					"kurs": [{
-						"name": "Java Enterprise Application",
-						"url": "http://test.de/informatik/g1/jee",
-						"dozent": "Stefan Pratsch",
-						"raum": 233,
-						"startTime": "8:00",
-						"endTime": "12:00"
-					},{
-						"name": "BWL",
-						"url": "http://test.de/informatik/g1/bwl",
-						"dozent": "Herr Görmer",
-						"raum": 233,
-						"startTime": "12:00",
-						"endTime": "14:00"
-					}]
-				}]
-			}]
-		}]
-		
-	},{
-		"name": "BWL",
-		"url": "http://test.de/bwl",
-		"semester": [{
-			"name": "2. Semester",
-			"url": "http://test.de/bwl/2/",
-			"gruppe": [{
-				"name": "Gruppe 1",
-				"url": "http://test.de/bwl/2/g1",
-				"tag": [{
-					"name": "Montag",
-					"anzKurse": 1,
-					"kurs": [{
-						"name": "BWL",
-						"url": "http://test.de/bwl/g1/jee",
-						"dozent": "Herr Görmer",
-						"raum": 233,
-						"startTime": "8:00",
-						"endTime": "12:00"
-					}]
-				}]
-			}]
-		}]
-	}]
+    "items": [{
+        "name": "Informatik",
+        "leaf": false,
+		"items": [{
+            "name": "1. Semester",
+            "leaf": false,
+			"items": [{
+                "name": "Gruppe 1",
+                "leaf": false,
+				"items": [{
+                    "name": "Montag",
+                    "anzKurse": 1,
+                    "leaf": false,
+					"items": [{
+                        "startTime": "8:00",
+                        "dozent": "Stefan Pratsch",
+                        "name": "Java Enterprise Application",
+                        "raum": "223",
+                        "endTime": "12:00",
+						"leaf": true
+                    },
+					{
+                        "startTime": "8:00",
+                        "dozent": "Stefan Pratsch",
+                        "name": "BWL",
+                        "raum": "223",
+                        "endTime": "12:00",
+						"leaf": true
+                    }]
+                }]
+            }]
+        }]
+    }, {
+        "name": "BWL2",
+        "leaf": false,
+		"items": [{
+            "name": "1. Semester",
+            "leaf": false,
+			"items": [{
+                "name": "Gruppe 1",
+                "leaf": false,
+				"items": [{
+                    "name": "Montag",
+                    "anzKurse": 1,
+                    "leaf": false,
+					"items": [{
+                        "startTime": "8:00",
+                        "dozent": "Herr Görmer",
+                        "name": "BWL",
+                        "raum": "223",
+                        "endTime": "12:00",
+						"leaf": true
+                    }]
+                }]
+            }]
+        }]
+    }]
 }
