@@ -1,0 +1,7 @@
+/.svn/
+/build/
+/nbproject/private/
+/src/.svn/
+/src/java/.svn/
+/src/java/org/.svn/
+/src/java/org/json/.svn/
