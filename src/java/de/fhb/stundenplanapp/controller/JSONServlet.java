@@ -274,17 +274,17 @@ public class JSONServlet extends HttpServlet {
 										veranstaltung.put("bemerkung", ver.getBemerkung());
 										veranstaltung.put("startTime", ver.getStartTime());
 										veranstaltung.put("endTime", ver.getEndTime());
-										tag.append("item", veranstaltung);
+										tag.append("items", veranstaltung);
 									}
-									gruppe.append("item", tag);
+									gruppe.append("items", tag);
 								}
-								semester.append("item", gruppe);										
+								semester.append("items", gruppe);										
 							}
-							studiengang.append("item", semester);
+							studiengang.append("items", semester);
 						}
-						fachbereich.append("item", studiengang);
+						fachbereich.append("items", studiengang);
 					}
-					root.append("item", fachbereich);
+					root.append("items", fachbereich);
 				}
 				
 			} catch (JSONException e) {
