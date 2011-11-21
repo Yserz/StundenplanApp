@@ -4,19 +4,19 @@ package de.fhb.stundenplanapp.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Studieng‰nge {
+public class Studieng√§nge {
 	
 	private String name="hallo";
 	private String link="test";
 	private List<Semester> semester=null;
 	
-	public Studieng‰nge(){
+	public Studieng√§nge(){
 		semester=new ArrayList<Semester>();
 	}
 	
 	@Override
 	public String toString() {
-		return "Studieng‰nge [name=" + name + ", semester="
+		return "Studieng√§nge [name=" + name + ", semester="
 				+ semester + "]";
 	}
 	/**

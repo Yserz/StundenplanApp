@@ -12,21 +12,21 @@ import java.util.List;
 import de.fhb.stundenplanapp.data.Fachbereich;
 import de.fhb.stundenplanapp.data.Gruppen;
 import de.fhb.stundenplanapp.data.Semester;
-import de.fhb.stundenplanapp.data.Studieng‰nge;
+import de.fhb.stundenplanapp.data.Studieng√§nge;
 import de.fhb.stundenplanapp.data.Tage;
 import de.fhb.stundenplanapp.data.Veranstaltungen;
 
-public class FindStudieng‰nge {
+public class FindStudieng√§nge {
 	
 	private String url="http://informatik.fh-brandenburg.de/";
 	private List<Fachbereich> fbs;
-	private Studieng‰nge st;
+	private Studieng√§nge st;
 	private Semester se;
 	private Gruppen gr;
 	
-	public FindStudieng‰nge(){
+	public FindStudieng√§nge(){
 		fbs=new ArrayList<Fachbereich>();
-		st=new Studieng‰nge();
+		st=new Studieng√§nge();
 	}
 
 	public List<Fachbereich> getFachbereiche() {
@@ -75,7 +75,7 @@ public class FindStudieng‰nge {
 	}
 	
 	private void getStudiengang(String in) throws IOException{
-		st=new Studieng‰nge();
+		st=new Studieng√§nge();
 		int an,end;
 		an=in.indexOf("<strong>");
 		end=in.indexOf("</strong>");
