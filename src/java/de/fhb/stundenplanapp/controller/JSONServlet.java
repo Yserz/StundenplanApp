@@ -111,28 +111,33 @@ public class JSONServlet extends HttpServlet {
 				
 				JSONObject fachbereich = new JSONObject();
 				fachbereich.put("name", "Informatik");
-				//fachbereich.put("url", "http://test.de/informatik");
+				fachbereich.put("model", "Fachbereich");
+				fachbereich.put("url", "http://test.de/informatik");
 				fachbereich.put("leaf", false);
 				
 				JSONObject semester = new JSONObject();
 				semester.put("name", "1. Semester");
-				//semester.put("url", "http://test.de/informatik/1/");
+				semester.put("model", "Semester");
+				semester.put("url", "http://test.de/informatik/1/");
 				semester.put("leaf", false);
 				
 				JSONObject gruppe = new JSONObject();
 				gruppe.put("name", "Gruppe 1");
-				//gruppe.put("url", "http://test.de/informatik/1/g1");
+				gruppe.put("model", "Gruppe");
+				gruppe.put("url", "http://test.de/informatik/1/g1");
 				gruppe.put("leaf", false);
 				
 				JSONObject tag = new JSONObject();
 				tag.put("name", "Montag");
+				tag.put("model", "Tag");
 				tag.put("anzKurse", 1);
 				tag.put("leaf", false);
 				
 				
 				JSONObject kurs = new JSONObject();
 				kurs.put("name", "Java Enterprise Application");
-				//kurs.put("url", "http://test.de/informatik/1/g1/jee");
+				kurs.put("model", "Kurs");
+				kurs.put("url", "http://test.de/informatik/1/g1/jee");
 				kurs.put("dozent", "Stefan Pratsch");
 				kurs.put("raum", "223");
 				kurs.put("startTime", "8:00");
@@ -148,27 +153,32 @@ public class JSONServlet extends HttpServlet {
 				
 				fachbereich = new JSONObject();
 				fachbereich.put("name", "BWL2");
-				//fachbereich.put("url", "http://test.de/bwl");
+				fachbereich.put("model", "Fachbereich");
+				fachbereich.put("url", "http://test.de/bwl");
 				fachbereich.put("leaf", false);
 				
 				semester = new JSONObject();
 				semester.put("name", "1. Semester");
-				//semester.put("url", "http://test.de/bwl/1/");
+				semester.put("model", "Semester");
+				semester.put("url", "http://test.de/bwl/1/");
 				semester.put("leaf", false);
 				
 				gruppe = new JSONObject();
 				gruppe.put("name", "Gruppe 1");
-				//gruppe.put("url", "http://test.de/bwl/1/g1");
+				gruppe.put("model", "Gruppe");
+				gruppe.put("url", "http://test.de/bwl/1/g1");
 				gruppe.put("leaf", false);
 				
 				tag = new JSONObject();
 				tag.put("name", "Montag");
+				tag.put("model", "Tag");
 				tag.put("anzKurse", 1);
 				tag.put("leaf", false);
 				
 				kurs = new JSONObject();
 				kurs.put("name", "BWL");
-				//kurs.put("url", "http://test.de/bwl/1/g1/jee");
+				kurs.put("model", "Kurs");
+				kurs.put("url", "http://test.de/bwl/1/g1/jee");
 				kurs.put("dozent", "Herr Görmer");
 				kurs.put("raum", "223");
 				kurs.put("startTime", "8:00");

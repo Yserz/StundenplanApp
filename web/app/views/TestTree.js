@@ -2,7 +2,8 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
     fullscreen: true,
     title: 'StundenplanApp',
     store: App.stores.fachrichtungStoreTree,
-	updateTitleText: true,
+	displayField: 'name',
+	styleHtmlContent: true,
     getDetailCard: function(item, parent) {
         var itemData = item.attributes.record.data,
         parentData = parent.attributes.record.data,
@@ -16,20 +17,32 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
         return detailCard;
     },
 	getItemTextTpl: function() {
-        var tplConstructor = '{name}' +
-            '<tpl if="model === \'Artist\'">'+
+        var tplConstructor = '<h2>{name}</h2>' +
+            '<tpl if="model === \'Fachbereich\'">'+
                 '<div class="metadata">' +
-                    ' {[values.items.length]} albums' +
+                    ' {[values.items.length]} Semester' +
                 '</div>' +
             '</tpl>' +
-            '<tpl if="model === \'Album\'">'+
+            '<tpl if="model === \'Semester\'">'+
                 '<div class="metadata">' +
-                    ' {[values.items.length]} tracks' +
+                    ' {[values.items.length]} Gruppe(n)' +
                 '</div>' +
             '</tpl>' +
-            '<tpl if="model === \'Track\'">'+
+			'<tpl if="model === \'Gruppe\'">'+
                 '<div class="metadata">' +
-                    ' Duration: {[Math.floor(values.duration/60)]}:{[values.duration%60]}' +
+                    ' {[values.items.length]} Tag(e)' +
+                '</div>' +
+            '</tpl>' +
+			'<tpl if="model === \'Tag\'">'+
+                '<div class="metadata">' +
+                    ' {[values.items.length]} Kurs(e)' +
+                '</div>' +
+            '</tpl>' +
+            '<tpl if="model === \'Kurs\'">'+
+                '<div class="metadata">' +
+                    ' <b>Zeit: {[values.startTime]} - {[values.endTime]}</b><br />' +
+					' Raum: {[values.raum]}<br />' +
+					' Dozent: {[values.dozent]}<br />' +
                 '</div>' +
             '</tpl>';
         return tplConstructor;
