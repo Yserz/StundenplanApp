@@ -115,7 +115,7 @@ public class StundenPlanParser {
 			if ((test.indexOf("href")>-1)&&(test.indexOf("Semester")>-1)){
 				se=new Semester();
 				an=test.indexOf("Semester");
-				se.setName(test.substring(an-3,an+7));
+				se.setName(test.substring(an-3,an+8));
 				findGruppe(test+"1. Gruppe");
 				st.addSemester(se);
 			}
