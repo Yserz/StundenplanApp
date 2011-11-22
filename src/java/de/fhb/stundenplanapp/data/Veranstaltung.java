@@ -2,7 +2,7 @@ package de.fhb.stundenplanapp.data;
 
 
 
-public class Veranstaltungen {
+public class Veranstaltung {
 	
 	private String name;
 	private String bemerkung;

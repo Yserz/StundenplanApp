@@ -7,10 +7,10 @@ import java.util.List;
 public class Semester {
 	
 	private String name;
-	private List<Gruppen> gruppen;
+	private List<Gruppe> gruppen;
 	
 	public Semester(){
-		gruppen=new ArrayList<Gruppen>();
+		gruppen=new ArrayList<Gruppe>();
 	}
 	
 	@Override
@@ -23,14 +23,14 @@ public class Semester {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Gruppen> getGruppen() {
+	public List<Gruppe> getGruppen() {
 		return gruppen;
 	}
-	public void setGruppen(List<Gruppen> gruppen) {
+	public void setGruppen(List<Gruppe> gruppen) {
 		this.gruppen = gruppen;
 	}
 	
-	public void addGruppe(Gruppen gruppe){
+	public void addGruppe(Gruppe gruppe){
 		this.gruppen.add(gruppe);
 	}
 

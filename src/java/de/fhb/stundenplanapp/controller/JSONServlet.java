@@ -17,11 +17,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.fhb.stundenplanapp.data.Fachbereich;
-import de.fhb.stundenplanapp.data.Gruppen;
+import de.fhb.stundenplanapp.data.Gruppe;
 import de.fhb.stundenplanapp.data.Semester;
 import de.fhb.stundenplanapp.data.Studiengänge;
-import de.fhb.stundenplanapp.data.Tage;
-import de.fhb.stundenplanapp.data.Veranstaltungen;
+import de.fhb.stundenplanapp.data.Tag;
+import de.fhb.stundenplanapp.data.Veranstaltung;
 import de.fhb.stundenplanapp.manager.FindStudiengänge;
 
 /**
@@ -255,18 +255,18 @@ public class JSONServlet extends HttpServlet {
 							semester.put("name", se.getName());
 							semester.put("model", "Semester");
 							semester.put("leaf", false);
-							for (Gruppen gr : se.getGruppen()) {
+							for (Gruppe gr : se.getGruppen()) {
 								gruppe = new JSONObject();
 								gruppe.put("name", gr.getName());
 								gruppe.put("model", "Gruppe");
 								gruppe.put("leaf", false);
 								gruppe.put("link", gr.getLink());
-								for (Tage ta : gr.getTage()) {
+								for (Tag ta : gr.getTage()) {
 									tag = new JSONObject();
 									tag.put("name", ta.getWochentag());
 									tag.put("model", "Tag");
 									tag.put("leaf", false);
-									for (Veranstaltungen ver : ta.getVeranstaltungen()) {
+									for (Veranstaltung ver : ta.getVeranstaltungen()) {
 										veranstaltung = new JSONObject();
 										veranstaltung.put("name", ver.getName());
 										veranstaltung.put("model", "Kurs");

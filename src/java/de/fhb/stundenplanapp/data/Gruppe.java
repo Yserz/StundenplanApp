@@ -2,11 +2,11 @@ package de.fhb.stundenplanapp.data;
 
 import java.util.List;
 
-public class Gruppen {
+public class Gruppe {
 	
 	private String name;
 	private String link;
-	private List<Tage> tage;
+	private List<Tag> tage;
 	
 	
 	
@@ -43,13 +43,13 @@ public class Gruppen {
 	/**
 	 * @return the tage
 	 */
-	public List<Tage> getTage() {
+	public List<Tag> getTage() {
 		return tage;
 	}
 	/**
 	 * @param tage the tage to set
 	 */
-	public void setTage(List<Tage> tage) {
+	public void setTage(List<Tag> tage) {
 		this.tage = tage;
 	}
 

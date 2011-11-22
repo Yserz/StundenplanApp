@@ -5,10 +5,10 @@ package de.fhb.stundenplanapp.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tage {
+public class Tag {
 	
 	private String wochentag;
-	private List<Veranstaltungen> veranstaltungen;
+	private List<Veranstaltung> veranstaltungen;
 	
 	@Override
 	public String toString() {
@@ -16,9 +16,9 @@ public class Tage {
 				+ veranstaltungen + "]";
 	}
 	
-	public Tage(String wtage){
+	public Tag(String wtage){
 		this.wochentag=wtage;
-		veranstaltungen=new ArrayList<Veranstaltungen>();
+		veranstaltungen=new ArrayList<Veranstaltung>();
 	}
 	
 	/**
@@ -36,17 +36,17 @@ public class Tage {
 	/**
 	 * @return the veranstaltungen
 	 */
-	public List<Veranstaltungen> getVeranstaltungen() {
+	public List<Veranstaltung> getVeranstaltungen() {
 		return veranstaltungen;
 	}
 	/**
 	 * @param veranstaltungen the veranstaltungen to set
 	 */
-	public void setVeranstaltungen(List<Veranstaltungen> veranstaltungen) {
+	public void setVeranstaltungen(List<Veranstaltung> veranstaltungen) {
 		this.veranstaltungen = veranstaltungen;
 	}
 	
-	public void addVeranstaltung(Veranstaltungen veran){
+	public void addVeranstaltung(Veranstaltung veran){
 		this.veranstaltungen.add(veran);
 	}
 
