@@ -16,20 +16,6 @@ Ext.regController('AppController', {
 		}
 
         
-    },
-	'newwindow': function (options) {
-	
-	    App.views.mainView.setActiveItem(
-	        App.views.test2,
-	        { type: 'slide', direction: 'left' }
-	    );
-	},
-	'back': function (options) {
-	
-	    App.views.mainView.setActiveItem(
-	        App.views.test,
-	        { type: 'slide', direction: 'right' }
-	    );
-	}
+    }
 });
 App.controllers.appController = Ext.ControllerManager.get('AppController');
