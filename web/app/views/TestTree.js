@@ -18,7 +18,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
     },*/
 	getItemTextTpl: function() {
         var tplConstructor = '<h2>{name}</h2>' +
-            '<tpl if="model === \'Fachbereich\'">'+
+            '<tpl if="model === \'Studiengang\'">'+
                 '<div class="metadata">' +
                     ' {[values.items.length]} Semester' +
                 '</div>' +
@@ -30,7 +30,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
             '</tpl>' +
 			'<tpl if="model === \'Gruppe\'">'+
                 '<div class="metadata">' +
-                    ' {[values.items.length]} Tag(e)' +
+                    /*' {[values.items.length]} Tag(e)' +*/
                 '</div>' +
             '</tpl>' +
 			'<tpl if="model === \'Tag\'">'+
@@ -41,8 +41,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
             '<tpl if="model === \'Kurs\'">'+
                 '<div class="metadata">' +
                     ' <b>Zeit: {[values.startTime]} - {[values.endTime]}</b><br />' +
-					' Raum: {[values.raum]}<br />' +
-					' Dozent: {[values.dozent]}<br />' +
+					' {[values.bemerkung]}<br />' +
                 '</div>' +
             '</tpl>';
         return tplConstructor;

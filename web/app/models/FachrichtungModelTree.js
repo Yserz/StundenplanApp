@@ -5,8 +5,7 @@ Ext.regModel('ListModelTree', {
 				{name: 'items',			type: 'auto'},
 				{name: 'startTime',		type: 'string'},
 				{name: 'endTime',		type: 'string'},
-				{name: 'dozent',		type: 'string'},
-				{name: 'raum',			type: 'string'},
+				{name: 'bemerkung',		type: 'string'},
                 {name: 'url',			type: 'string'}
     ]
 });
