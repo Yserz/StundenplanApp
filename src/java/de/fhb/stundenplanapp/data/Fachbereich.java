@@ -7,11 +7,11 @@ import java.util.List;
 public class Fachbereich {
 	
 	private String name;
-	private List<Studiengänge> studiengaenge;
+	private List<Studiengang> studiengaenge;
 	
 	public Fachbereich(){
 		name="test";
-		studiengaenge=new ArrayList<Studiengänge>();
+		studiengaenge=new ArrayList<Studiengang>();
 	}
 	
 	@Override
@@ -35,17 +35,17 @@ public class Fachbereich {
 	/**
 	 * @return the studiengaenge
 	 */
-	public List<Studiengänge> getStudiengaenge() {
+	public List<Studiengang> getStudiengaenge() {
 		return studiengaenge;
 	}
 	/**
 	 * @param studiengaenge the studiengaenge to set
 	 */
-	public void setStudiengaenge(List<Studiengänge> studiengaenge) {
+	public void setStudiengaenge(List<Studiengang> studiengaenge) {
 		this.studiengaenge = studiengaenge;
 	}
 	
-	public void addStudiengaenge(Studiengänge st){
+	public void addStudiengaenge(Studiengang st){
 		this.studiengaenge.add(st);
 	}
 

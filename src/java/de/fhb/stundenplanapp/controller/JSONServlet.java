@@ -19,10 +19,10 @@ import org.json.JSONObject;
 import de.fhb.stundenplanapp.data.Fachbereich;
 import de.fhb.stundenplanapp.data.Gruppe;
 import de.fhb.stundenplanapp.data.Semester;
-import de.fhb.stundenplanapp.data.Studiengänge;
+import de.fhb.stundenplanapp.data.Studiengang;
 import de.fhb.stundenplanapp.data.Tag;
 import de.fhb.stundenplanapp.data.Veranstaltung;
-import de.fhb.stundenplanapp.manager.FindStudiengänge;
+import de.fhb.stundenplanapp.manager.StundenPlanParser;
 
 /**
  *
@@ -229,7 +229,7 @@ public class JSONServlet extends HttpServlet {
 				//json.append("comment", new JSONObject(comment));
 				 */
 				
-				List<Fachbereich> fbs = new FindStudiengänge().getFachbereiche();
+				List<Fachbereich> fbs = new StundenPlanParser().getFachbereiche();
 				
 				JSONObject fachbereich;
 				JSONObject studiengang;
@@ -244,7 +244,7 @@ public class JSONServlet extends HttpServlet {
 					fachbereich.put("model", "Fachbereich");
 					fachbereich.put("leaf", false);
 					fachbereich.put("leaf", false);
-					for (Studiengänge st : fb.getStudiengaenge()) {
+					for (Studiengang st : fb.getStudiengaenge()) {
 						studiengang = new JSONObject();
 						studiengang.put("name", st.getName());
 						studiengang.put("model", "Studiengang");
