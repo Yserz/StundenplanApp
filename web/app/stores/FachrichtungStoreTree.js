@@ -19,7 +19,7 @@ App.stores.fachrichtungStoreTree = new Ext.data.TreeStore({
         type: 'ajax',
 		//id: 'FachrichtungStoreTree',
 		//url: 'http://localhost:8080/StundenplanAppServerSide/stundenplanJSON.json',
-        url : 'http://localhost:8080/StundenplanAppServerSide/JSONServlet',
+        url : 'http://localhost:8080/StundenplanApp/JSONServlet',
 		//method: 'GET',
         reader: {
             type: 'tree',
