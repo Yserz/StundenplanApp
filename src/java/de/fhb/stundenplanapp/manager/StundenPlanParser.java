@@ -86,7 +86,6 @@ public class StundenPlanParser {
 		an=in.indexOf("<strong>");
 		end=in.indexOf("</strong>");
 		if((an > -1) && (end >-1)){
-			//System.out.println(in.substring(an+8, end));
 			st.setName(in.substring(an+8, end));
 		}
 		an=in.indexOf("href");
@@ -203,7 +202,12 @@ public class StundenPlanParser {
 								veran.setName(name.toString());
 								begin=ende+4;
 								ende= eingabe.indexOf("</font>");
-								veran.setBemerkung(eingabe.substring(begin,ende));
+								//veran.setBemerkung(eingabe.substring(begin,ende));
+								name=new StringBuilder(eingabe.substring(begin,ende));
+								while(name.indexOf("<")>-1){
+									name.delete(name.indexOf("<"), name.indexOf(">")+1);
+								}
+								veran.setBemerkung(name.toString());
 								tage.get(i).addVeranstaltung(veran);	
 							}
 							if ((eingabe.indexOf("bgcolor")>-1)&& eingabe.indexOf("<br>")==-1){

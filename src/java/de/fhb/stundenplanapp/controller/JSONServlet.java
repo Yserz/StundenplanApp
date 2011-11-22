@@ -241,8 +241,6 @@ public class JSONServlet extends HttpServlet {
 				for (Fachbereich fb : fbs) {
 					fachbereich = new JSONObject();
 					fachbereich.put("name", fb.getName());
-					fachbereich.put("model", "Fachbereich");
-					fachbereich.put("leaf", false);
 					fachbereich.put("leaf", false);
 					for (Studiengang st : fb.getStudiengaenge()) {
 						studiengang = new JSONObject();
@@ -265,18 +263,22 @@ public class JSONServlet extends HttpServlet {
 									tag = new JSONObject();
 									tag.put("name", ta.getWochentag());
 									tag.put("model", "Tag");
-									tag.put("leaf", false);
-									for (Veranstaltung ver : ta.getVeranstaltungen()) {
-										veranstaltung = new JSONObject();
-										veranstaltung.put("name", ver.getName());
-										veranstaltung.put("model", "Kurs");
-										veranstaltung.put("leaf", true);
-										veranstaltung.put("bemerkung", ver.getBemerkung());
-										veranstaltung.put("startTime", ver.getStartTime());
-										veranstaltung.put("endTime", ver.getEndTime());
-										tag.append("items", veranstaltung);
-									}
+									if (ta.getVeranstaltungen().isEmpty()){
+										tag.put("leaf", true);
+									} else {
+										tag.put("leaf", false);
+										for (Veranstaltung ver : ta.getVeranstaltungen()) {
+											veranstaltung = new JSONObject();
+											veranstaltung.put("name", ver.getName());
+											veranstaltung.put("model", "Kurs");
+											veranstaltung.put("leaf", true);
+											veranstaltung.put("bemerkung", ver.getBemerkung());
+											veranstaltung.put("startTime", ver.getStartTime());
+											veranstaltung.put("endTime", ver.getEndTime());
+											tag.append("items", veranstaltung);
+										}
 									gruppe.append("items", tag);
+									}
 								}
 								semester.append("items", gruppe);										
 							}
@@ -296,7 +298,6 @@ public class JSONServlet extends HttpServlet {
 			
 			try {
 				//forward(req, resp, "/snippet.jsp");
-				System.out.println(root);
 				response.getWriter().println(root);
 			} catch (IOException e) {
 				//Konnte JSON nicht senden!
