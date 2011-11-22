@@ -227,8 +227,7 @@ public class StundenPlanParser {
 			}		
 		gr.setTage(tage);	
 		} catch (Exception e) {
-			System.out.println(e.getMessage() + " ### " + link + " ### " + eingabe + " ### " + begin + tage );
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
