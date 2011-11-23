@@ -1,11 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.fhb.stundenplanapp.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,6 +26,12 @@ import de.fhb.stundenplanapp.manager.StundenPlanParser;
 @WebServlet(name = "JSONServlet", urlPatterns = {"/JSONServlet"})
 public class JSONServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JSONObject root;
+
 	/** 
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 * @param request servlet request
@@ -42,7 +43,6 @@ public class JSONServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("application/json");
 		try {
-			JSONObject root = new JSONObject();
 			
 			try {
 				/**
@@ -118,7 +118,8 @@ public class JSONServlet extends HttpServlet {
 				//root.put("date", new Date(System.currentTimeMillis()));
 				//root.put("url", "http://test.de/");
 				
-				
+				*/
+				/*
 				JSONObject fachbereich = new JSONObject();
 				fachbereich.put("name", "Informatik");
 				fachbereich.put("model", "Fachbereich");
@@ -227,90 +228,10 @@ public class JSONServlet extends HttpServlet {
 				
 				root.append("items", fachbereich);
 				//json.append("comment", new JSONObject(comment));
-				 */
+				*/ 
 				
-				List<Fachbereich> fbs = new StundenPlanParser().getFachbereiche();
-				
-				JSONObject fachbereich;
-				JSONObject studiengang;
-				JSONObject semester;
-				JSONObject gruppe;
-				JSONObject tag;
-				JSONObject veranstaltung;
-				
-				for (Fachbereich fb : fbs) {
-					fachbereich = new JSONObject();
-					fachbereich.put("name", fb.getName());
-					fachbereich.put("leaf", false);
-					for (Studiengang st : fb.getStudiengaenge()) {
-						studiengang = new JSONObject();
-						studiengang.put("name", st.getName());
-						studiengang.put("model", "Studiengang");
-						studiengang.put("leaf", false);
-						studiengang.put("link", st.getLink());
-						for (Semester se : st.getSemester()) {
-							semester = new JSONObject();
-							semester.put("name", se.getName());
-							semester.put("model", "Semester");
-							semester.put("leaf", false);
-							if (se.getGruppen().size()!=1){
-								for (Gruppe gr : se.getGruppen()) {
-									gruppe = new JSONObject();
-									gruppe.put("name", gr.getName());
-									gruppe.put("model", "Gruppe");
-									gruppe.put("leaf", false);
-									gruppe.put("link", gr.getLink());
-									for (Tag ta : gr.getTage()) {
-										tag = new JSONObject();
-										tag.put("name", ta.getWochentag());
-										tag.put("model", "Tag");
-										if (ta.getVeranstaltungen().isEmpty()){
-											tag.put("leaf", true);
-										} else {
-											tag.put("leaf", false);
-											for (Veranstaltung ver : ta.getVeranstaltungen()) {
-												veranstaltung = new JSONObject();
-												veranstaltung.put("name", ver.getName());
-												veranstaltung.put("model", "Kurs");
-												veranstaltung.put("leaf", true);
-												veranstaltung.put("bemerkung", ver.getBemerkung());
-												veranstaltung.put("startTime", ver.getStartTime());
-												veranstaltung.put("endTime", ver.getEndTime());
-												tag.append("items", veranstaltung);
-											}
-										gruppe.append("items", tag);
-										}
-									}
-									semester.append("items", gruppe);
-								} 
-							} else {
-								for (Tag ta : se.getGruppen().get(0).getTage()) {
-									tag = new JSONObject();
-									tag.put("name", ta.getWochentag());
-									tag.put("model", "Tag");
-									if (ta.getVeranstaltungen().isEmpty()){
-										tag.put("leaf", true);
-									} else {
-										tag.put("leaf", false);
-										for (Veranstaltung ver : ta.getVeranstaltungen()) {
-											veranstaltung = new JSONObject();
-											veranstaltung.put("name", ver.getName());
-											veranstaltung.put("model", "Kurs");
-											veranstaltung.put("leaf", true);
-											veranstaltung.put("bemerkung", ver.getBemerkung());
-											veranstaltung.put("startTime", ver.getStartTime());
-											veranstaltung.put("endTime", ver.getEndTime());
-											tag.append("items", veranstaltung);
-										}
-									semester.append("items", tag);
-									}
-								}
-							}
-							studiengang.append("items", semester);
-						}
-						fachbereich.append("items", studiengang);
-					}
-					root.append("items", fachbereich);
+				if (root == null){
+					getStundenplanJSON();
 				}
 				
 			} catch (JSONException e) {
@@ -366,4 +287,94 @@ public class JSONServlet extends HttpServlet {
 	public String getServletInfo() {
 		return "Short description";
 	}// </editor-fold>
+	
+	public void getStundenplanJSON() throws JSONException{
+		List<Fachbereich> fbs = new StundenPlanParser().getFachbereiche();
+		
+		JSONObject fachbereich;
+		JSONObject studiengang;
+		JSONObject semester;
+		JSONObject gruppe;
+		JSONObject tag;
+		JSONObject veranstaltung;
+		
+		root = new JSONObject();
+		
+		for (Fachbereich fb : fbs) {
+			fachbereich = new JSONObject();
+			fachbereich.put("name", fb.getName());
+			fachbereich.put("leaf", false);
+			for (Studiengang st : fb.getStudiengaenge()) {
+				studiengang = new JSONObject();
+				studiengang.put("name", st.getName());
+				studiengang.put("model", "Studiengang");
+				studiengang.put("leaf", false);
+				studiengang.put("link", st.getLink());
+				for (Semester se : st.getSemester()) {
+					semester = new JSONObject();
+					semester.put("name", se.getName());
+					semester.put("model", "Semester");
+					semester.put("leaf", false);
+					if (se.getGruppen().size()!=1){
+						for (Gruppe gr : se.getGruppen()) {
+							gruppe = new JSONObject();
+							gruppe.put("name", gr.getName());
+							gruppe.put("model", "Gruppe");
+							gruppe.put("leaf", false);
+							gruppe.put("link", gr.getLink());
+							for (Tag ta : gr.getTage()) {
+								tag = new JSONObject();
+								tag.put("name", ta.getWochentag());
+								tag.put("model", "Tag");
+								if (ta.getVeranstaltungen().isEmpty()){
+									tag.put("leaf", true);
+								} else {
+									tag.put("leaf", false);
+									for (Veranstaltung ver : ta.getVeranstaltungen()) {
+										veranstaltung = new JSONObject();
+										veranstaltung.put("name", ver.getName());
+										veranstaltung.put("model", "Kurs");
+										veranstaltung.put("leaf", true);
+										veranstaltung.put("bemerkung", ver.getBemerkung());
+										veranstaltung.put("startTime", ver.getStartTime());
+										veranstaltung.put("endTime", ver.getEndTime());
+										tag.append("items", veranstaltung);
+									}
+								gruppe.append("items", tag);
+								}
+							}
+							semester.append("items", gruppe);
+						} 
+					} else {
+						for (Tag ta : se.getGruppen().get(0).getTage()) {
+							tag = new JSONObject();
+							tag.put("name", ta.getWochentag());
+							tag.put("model", "Tag");
+							if (ta.getVeranstaltungen().isEmpty()){
+								tag.put("leaf", true);
+							} else {
+								tag.put("leaf", false);
+								for (Veranstaltung ver : ta.getVeranstaltungen()) {
+									veranstaltung = new JSONObject();
+									veranstaltung.put("name", ver.getName());
+									veranstaltung.put("model", "Kurs");
+									veranstaltung.put("leaf", true);
+									veranstaltung.put("bemerkung", ver.getBemerkung());
+									veranstaltung.put("startTime", ver.getStartTime());
+									veranstaltung.put("endTime", ver.getEndTime());
+									tag.append("items", veranstaltung);
+								}
+							semester.append("items", tag);
+							}
+						}
+					}
+					studiengang.append("items", semester);
+				}
+				fachbereich.append("items", studiengang);
+			}
+			root.append("items", fachbereich);
+		}
+		
+	}
+	
 }
