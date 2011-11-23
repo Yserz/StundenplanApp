@@ -111,15 +111,13 @@ public class StundenPlanParser {
 		
 		String test=in.readLine();
 		while (test!=null){
+			test = test.trim();
 			if ((test.indexOf("href")>-1)&&(test.indexOf("Semester")>-1)){
 				se=new Semester();
 				an=test.indexOf("Semester");
 				se.setName(test.substring(an-3,an+8));
 				findGruppe(test+"1. Gruppe");
 				st.addSemester(se);
-			}
-			if (test.indexOf("Gruppe")>-1){
-				findGruppe(test);
 			}
 			if ((test.indexOf("Semester")>-1)&&(test.indexOf("href")==-1)){
 				se=new Semester();
@@ -128,7 +126,7 @@ public class StundenPlanParser {
 				test=test.substring(an-3,an+8);
 				se.setName(test);
 			}
-			if ((test.indexOf("href")==0) && (test.indexOf("<strong")==-1) && (test.indexOf("Gruppe")==-1)){
+			if ((test.indexOf("href")==0) && (test.indexOf("strong")==-1)){
 				findGruppeSpezial(test);
 			}
 			test=in.readLine();
