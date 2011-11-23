@@ -228,7 +228,7 @@ public class JSONServlet extends HttpServlet {
 				
 				root.append("items", fachbereich);
 				//json.append("comment", new JSONObject(comment));
-				*/ 
+				*/
 				
 				if (root == null){
 					getStundenplanJSON();
