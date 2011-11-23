@@ -128,6 +128,9 @@ public class StundenPlanParser {
 				test=test.substring(an-3,an+8);
 				se.setName(test);
 			}
+			if ((test.indexOf("href")==0) && (test.indexOf("<strong")==-1) && (test.indexOf("Gruppe")==-1)){
+				findGruppeSpezial(test);
+			}
 			test=in.readLine();
 
 		}
@@ -143,6 +146,21 @@ public class StundenPlanParser {
 		gr.setLink(inText.substring(an+6,end));
 		findPlan(gr.getLink());
 		se.addGruppe(gr);
+	}
+	
+	public void findGruppeSpezial(String inText){
+		int an,end;
+		gr=new Gruppe();
+		
+		an=inText.indexOf(">")+1;
+		end=inText.indexOf("<");
+		gr.setName(inText.substring(an, end));
+		an=inText.indexOf("href");
+		end=inText.lastIndexOf("\"");
+		gr.setLink(inText.substring(an+6,end));
+		findPlan(gr.getLink());
+		se.addGruppe(gr);
+
 	}
 	
 	@SuppressWarnings("deprecation")
