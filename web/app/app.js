@@ -13,11 +13,17 @@ var App = new Ext.Application({
     useLoadMask				: true,
 
     launch: function () {
+        this.launched = true;
+        this.mainLaunch();
+    },
+    mainLaunch: function() {
+        //if (!device || !this.launched) {return;}
+        console.log('mainLaunch');
         Ext.dispatch({
             controller: App.controllers.appController,
             action: 'index'
         });
-    },
+    }/*,
 	profiles: {
 		portraitPhone: function() {
 			return Ext.is.Phone && Ext.orientation == 'portrait';
@@ -31,5 +37,5 @@ var App = new Ext.Application({
 		landscapeTablet: function() {
 			return !Ext.is.Phone && Ext.orientation == 'landscape';
 		}
-	}
+	}*/
 });
