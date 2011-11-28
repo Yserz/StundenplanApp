@@ -17,7 +17,7 @@ var App = new Ext.Application({
         this.mainLaunch();
     },
     mainLaunch: function() {
-        //if (!device || !this.launched) {return;}
+        //if (!Ext.is.Phone || !this.launched) {return;}
         console.log('mainLaunch');
         Ext.dispatch({
             controller: App.controllers.appController,

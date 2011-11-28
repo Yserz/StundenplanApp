@@ -1,9 +1,27 @@
 App.views.TestTree = Ext.extend(Ext.NestedList, {
     fullscreen: true,
+	layout: 'card',
     title: 'StundenplanApp',
     store: App.stores.fachrichtungStoreTree,
 	displayField: 'name',
 	styleHtmlContent: true,
+	emptyText: 'No Courses found!',
+	initComponent: function() {
+		App.views.TestTree.superclass.initComponent.apply(this, arguments);
+	},
+	listeners: {
+		render: function() {
+			var myButton = new Ext.Button({
+				type: 'light',
+				iconMask: true,
+				iconCls: 'refresh',
+				scope: this,
+				handler: this.onReload
+			});
+			this.toolbar.add(myButton);
+			this.toolbar.setDocked('bottom');
+		}	
+	},
     /*getDetailCard: function(item, parent) {
         var itemData = item.attributes.record.data,
         parentData = parent.attributes.record.data,
@@ -45,5 +63,15 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
                 '</div>' +
             '</tpl>';
         return tplConstructor;
+    },
+	/**
+    * Action trigger when press the add button
+    *
+    * @return {void}
+    */
+    onReload: function() {
+		//App.stores.fachrichtungStoreTree.read();
+		this.store.update();
     }
+	
 });

@@ -247,8 +247,11 @@ public class JSONServlet extends HttpServlet {
 			} catch (IOException e) {
 				//Konnte JSON nicht senden!
 			}
-		} finally {			
-			response.getWriter().close();
+		} finally {
+			if (response.getWriter()!=null) {
+				response.getWriter().close();
+			}
+			
 		}
 	}
 
