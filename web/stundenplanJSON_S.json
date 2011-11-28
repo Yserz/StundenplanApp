@@ -1,0 +1,141 @@
+{
+    "items": [{
+        "items": [{
+            "model": "Studiengang",
+            "items": [{
+                "model": "Semester",
+                "items": [{
+                    "model": "Tag",
+                    "items": [{
+                        "startTime": "8:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Ingwer, Prof. Jänicke, Prof. Kim, Dr. Kreutel, Prof. Urban, 224-(INFZ), 233-(INFZ), 118-(INFZ)",
+                        "name": "Cross-Media-Publishing, Eingebettete Systeme, Mobile Anwendungen und Systeme",
+                        "leaf": true,
+                        "endTime": "10:00"
+                    }, {
+                        "startTime": "10:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Ingwer, Prof. Jänicke, Prof. Kim, Dr. Kreutel, Prof. Urban, 224-(INFZ), 305-(INFZ), 118-(INFZ)",
+                        "name": "Cross-Media-Publishing, Eingebettete Systeme, Mobile Anwendungen und Systeme",
+                        "leaf": true,
+                        "endTime": "12:00"
+                    }, {
+                        "startTime": "14:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Boersch, Prof. Heinsohn, 132-(INFZ), 130-(INFZ), 131-(INFZ)",
+                        "name": "Wissensbasierte Systeme in der Medizin",
+                        "leaf": true,
+                        "endTime": "18:00"
+                    }],
+                    "name": "Montag",
+                    "leaf": false
+                }, {
+                    "model": "Tag",
+                    "items": [{
+                        "startTime": "8:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Kell, Herr Pratsch, Prof. Urban, 232-(INFZ), 233-(INFZ), 132-(INFZ), 5-BITEL: Systementwurf, Prof. Kell, R132 (INFZ)",
+                        "name": "Medienpsychologie, Systementwurf, Java Enterprise Anwendungen",
+                        "leaf": true,
+                        "endTime": "10:00"
+                    }, {
+                        "startTime": "10:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Kell, Herr Pratsch, Prof. Urban, 232-(INFZ), 027-(INFZ), 132-(INFZ), 108-(Bibliothek), 5-ITEL: Systementwurf, Prof. Kell, R132 (INFZ)",
+                        "name": "Medienpsychologie, Systementwurf, Java Enterprise Anwendungen",
+                        "leaf": true,
+                        "endTime": "12:00"
+                    }],
+                    "name": "Dienstag",
+                    "leaf": false
+                }, {
+                    "model": "Tag",
+                    "items": [{
+                        "startTime": "8:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Kim, Herr Rambow, Prof. Schmidt, 024-(INFZ), 035-(INFZ), Kim: 024",
+                        "name": "Software-Qualität, Multimediaproduktion",
+                        "leaf": true,
+                        "endTime": "10:00"
+                    }, {
+                        "startTime": "10:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Kim, Herr Rambow, Prof. Schmidt, 232-(INFZ), 233-(INFZ)",
+                        "name": "Software-Qualität, Multimediaproduktion",
+                        "leaf": true,
+                        "endTime": "12:00"
+                    }, {
+                        "startTime": "12:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Jänicke, 305-(INFZ)",
+                        "name": "S Informatik und Gesellschaft",
+                        "leaf": true,
+                        "endTime": "14:00"
+                    }, {
+                        "startTime": "14:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Görmer, 305-(INFZ)",
+                        "name": "V BWL, S BWL",
+                        "leaf": true,
+                        "endTime": "18:00"
+                    }],
+                    "name": "Mittwoch",
+                    "leaf": false
+                }, {
+                    "model": "Tag",
+                    "items": [{
+                        "startTime": "12:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Jänicke, 027-(INFZ)",
+                        "name": "S Informatik und Gesellschaft",
+                        "leaf": true,
+                        "endTime": "14:00"
+                    }, {
+                        "startTime": "14:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Boersch, Prof. Hasche, Prof. Heinsohn, Prof. Kim, Prof. Loose, Prof. Preuß, Prof. Schmidt, Prof. Urban, Prof. Vielhauer, 034-(INFZ), 220-(INFZ), 223-(INFZ), 233-(INFZ), 301-(INFZ), 035-(INFZ), 130-(INFZ), 109-(INFZ), 203-(INFZ), 010-(INFZ), 003-(INFZ)",
+                        "name": "Projekt",
+                        "leaf": true,
+                        "endTime": "18:00"
+                    }],
+                    "name": "Donnerstag",
+                    "leaf": false
+                }, {
+                    "model": "Tag",
+                    "items": [{
+                        "startTime": "8:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Boersch, Prof. Hasche, Prof. Heinsohn, Herr Ingwer, Prof. Loose, Prof. Mündemann, 224-(INFZ), 233-(INFZ), 305-(INFZ), 132-(INFZ), 130-(INFZ)",
+                        "name": "Autonome Mobile Systeme, Medientechnik Audio",
+                        "leaf": true,
+                        "endTime": "10:00"
+                    }, {
+                        "startTime": "10:00",
+                        "model": "Kurs",
+                        "bemerkung": "Herr Boersch, Prof. Hasche, Prof. Heinsohn, Herr Ingwer, Prof. Loose, Prof. Mündemann, 224-(INFZ), 233-(INFZ), 132-(INFZ), 130-(INFZ)",
+                        "name": "Autonome Mobile Systeme, Medientechnik Audio",
+                        "leaf": true,
+                        "endTime": "12:00"
+                    }, {
+                        "startTime": "12:00",
+                        "model": "Kurs",
+                        "bemerkung": "Prof. Kell, Prof. Loose, 305-(INFZ), Termine werden durch die Lehrenden bekanntgegeben",
+                        "name": "Praxisseminar, Bachelorseminar",
+                        "leaf": true,
+                        "endTime": "16:00"
+                    }],
+                    "name": "Freitag",
+                    "leaf": false
+                }],
+                "name": "5. Semester",
+                "leaf": false
+            }],
+            "link": "Stundenplan/ws1112/liste-infb.html",
+            "name": "Informatik (Bachelor)",
+            "leaf": false
+        }],
+        "name": "Informatik",
+        "leaf": false
+    }]
+}

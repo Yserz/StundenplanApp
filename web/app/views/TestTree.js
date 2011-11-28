@@ -18,7 +18,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
 				scope: this,
 				handler: this.onReload
 			});
-			this.toolbar.add(myButton);
+			//this.toolbar.add(myButton);
 			this.toolbar.setDocked('bottom');
 		}	
 	},
@@ -38,7 +38,7 @@ App.views.TestTree = Ext.extend(Ext.NestedList, {
         var tplConstructor = '<h2>{name}</h2>' +
             '<tpl if="model === \'Studiengang\'">'+
                 '<div class="metadata">' +
-                    ' {[values.items.length]} Semester' +
+                    ' {[values.items.length]} aktive(s) Semester' +
                 '</div>' +
             '</tpl>' +
             '<tpl if="model === \'Semester\'">'+
