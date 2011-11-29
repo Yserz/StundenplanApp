@@ -229,7 +229,7 @@ public class JSONServlet extends HttpServlet {
 				root.append("items", fachbereich);
 				//json.append("comment", new JSONObject(comment));
 				*/
-				
+		
 				if (root == null){
 					getStundenplanJSON();
 				}
@@ -300,6 +300,8 @@ public class JSONServlet extends HttpServlet {
 		
 		root = new JSONObject();
 		
+		System.out.println(fbs.get(2));
+		
 		for (Fachbereich fb : fbs) {
 			fachbereich = new JSONObject();
 			fachbereich.put("name", fb.getName());
@@ -315,7 +317,7 @@ public class JSONServlet extends HttpServlet {
 					semester.put("name", se.getName());
 					semester.put("model", "Semester");
 					semester.put("leaf", false);
-					if (se.getGruppen().size()!=1){
+					if (se.getGruppen().size()>1){
 						for (Gruppe gr : se.getGruppen()) {
 							gruppe = new JSONObject();
 							gruppe.put("name", gr.getName());

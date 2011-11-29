@@ -108,16 +108,18 @@ public class StundenPlanParser {
 		URL u = new URL(url + inURL);
 		InputStream is = u.openStream();
 		DataInputStream in = new DataInputStream(new BufferedInputStream(is));
+		boolean hatwasgemacht=false;
 		
 		String test=in.readLine();
 		while (test!=null){
 			test = test.trim();
-			if ((test.indexOf("href")>-1)&&(test.indexOf("Semester")>-1)){
+			if ((test.indexOf("href")>-1)&&(test.indexOf("Semester")>-1) && !hatwasgemacht){
 				se=new Semester();
 				an=test.indexOf("Semester");
 				se.setName(test.substring(an-3,an+8));
 				findGruppe(test+"1. Gruppe");
 				st.addSemester(se);
+				hatwasgemacht=true;
 			}
 			if ((test.indexOf("Semester")>-1)&&(test.indexOf("href")==-1)){
 				se=new Semester();
@@ -126,10 +128,11 @@ public class StundenPlanParser {
 				test=test.substring(an-3,an+8);
 				se.setName(test);
 			}
-			if ((test.indexOf("href")==0) && (test.indexOf("strong")==-1)){
+			if ((test.indexOf("href")==0) && (test.indexOf("strong")==-1) && !hatwasgemacht){
 				findGruppeSpezial(test);
 			}
 			test=in.readLine();
+			hatwasgemacht=false;
 
 		}
 	}
