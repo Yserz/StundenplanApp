@@ -301,6 +301,8 @@ public class JSONServlet extends HttpServlet {
 		JSONObject tag;
 		JSONObject veranstaltung;
 		
+		int anzahl=0;
+		
 		root = new JSONObject();
 		
 		System.out.println(fbs.get(2));
@@ -327,7 +329,52 @@ public class JSONServlet extends HttpServlet {
 							gruppe.put("model", "Gruppe");
 							gruppe.put("leaf", false);
 							gruppe.put("link", gr.getLink());
-							for (Tag ta : gr.getTage()) {
+							List<Tag> tage=se.getGruppen().get(0).getTage();
+							for (Tag tag2 : tage) {
+								anzahl=anzahl + tag2.getVeranstaltungen().size();
+								System.out.println(anzahl);
+							}
+							if (anzahl > 0) {
+								for (Tag ta : gr.getTage()) {
+									tag = new JSONObject();
+									tag.put("name", ta.getWochentag());
+									tag.put("model", "Tag");
+									if (ta.getVeranstaltungen().isEmpty()){
+										tag.put("leaf", true);
+									} else {
+										tag.put("leaf", false);
+										for (Veranstaltung ver : ta.getVeranstaltungen()) {
+											veranstaltung = new JSONObject();
+											veranstaltung.put("name", ver.getName());
+											veranstaltung.put("model", "Kurs");
+											veranstaltung.put("leaf", true);
+											veranstaltung.put("bemerkung", ver.getBemerkung());
+											veranstaltung.put("startTime", ver.getStartTime());
+											veranstaltung.put("endTime", ver.getEndTime());
+											tag.append("items", veranstaltung);
+										}
+									gruppe.append("items", tag);
+									}
+								}
+							} else {
+								System.out.println("bla");
+								veranstaltung = new JSONObject();
+								veranstaltung.put("name", "kein Stundenplan vorhanden");
+								veranstaltung.put("model", "Gruppe");
+								veranstaltung.put("leaf", true);
+								gruppe.append("items", veranstaltung);
+							}
+							anzahl=0;
+							semester.append("items", gruppe);
+						} 
+					} else {
+						List<Tag> tage=se.getGruppen().get(0).getTage();
+						for (Tag tag2 : tage) {
+							anzahl=anzahl + tag2.getVeranstaltungen().size();
+							System.out.println(anzahl);
+						}
+						if (anzahl > 0) {
+							for (Tag ta : se.getGruppen().get(0).getTage()) {
 								tag = new JSONObject();
 								tag.put("name", ta.getWochentag());
 								tag.put("model", "Tag");
@@ -345,33 +392,19 @@ public class JSONServlet extends HttpServlet {
 										veranstaltung.put("endTime", ver.getEndTime());
 										tag.append("items", veranstaltung);
 									}
-								gruppe.append("items", tag);
+								semester.append("items", tag);
 								}
 							}
-							semester.append("items", gruppe);
-						} 
-					} else {
-						for (Tag ta : se.getGruppen().get(0).getTage()) {
-							tag = new JSONObject();
-							tag.put("name", ta.getWochentag());
-							tag.put("model", "Tag");
-							if (ta.getVeranstaltungen().isEmpty()){
-								tag.put("leaf", true);
-							} else {
-								tag.put("leaf", false);
-								for (Veranstaltung ver : ta.getVeranstaltungen()) {
-									veranstaltung = new JSONObject();
-									veranstaltung.put("name", ver.getName());
-									veranstaltung.put("model", "Kurs");
-									veranstaltung.put("leaf", true);
-									veranstaltung.put("bemerkung", ver.getBemerkung());
-									veranstaltung.put("startTime", ver.getStartTime());
-									veranstaltung.put("endTime", ver.getEndTime());
-									tag.append("items", veranstaltung);
-								}
-							semester.append("items", tag);
-							}
+						} else {
+							System.out.println("bla");
+							veranstaltung = new JSONObject();
+							veranstaltung.put("name", "kein Stundenplan vorhanden");
+							veranstaltung.put("model", "Gruppe");
+							veranstaltung.put("leaf", true);
+
+							semester.append("items", veranstaltung);	
 						}
+						anzahl=0;
 					}
 					studiengang.append("items", semester);
 				}

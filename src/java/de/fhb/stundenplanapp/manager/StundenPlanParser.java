@@ -247,7 +247,7 @@ public class StundenPlanParser {
 					}
 					eingabe=dis.readLine();
 				}
-			}		
+			}	
 		gr.setTage(tage);	
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
