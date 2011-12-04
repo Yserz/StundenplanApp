@@ -3,6 +3,7 @@ package de.fhb.stundenplanapp.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.Schedule;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,86 +40,13 @@ public class JSONServlet extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
+
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/json");
 		try {
 			
 			try {
-				/**
-				 * root.put("date", new Date(System.currentTimeMillis()));
-				root.put("url", "http://test.de/");
-				root.put("name", "StundenplanApp");
-				
-				
-				JSONObject fachbereich = new JSONObject();
-				fachbereich.put("name", "Informatik");
-				fachbereich.put("url", "http://test.de/informatik");
-				
-				JSONObject semester = new JSONObject();
-				semester.put("name", "1. Semester");
-				semester.put("url", "http://test.de/informatik/1/");
-				
-				JSONObject gruppe = new JSONObject();
-				gruppe.put("name", "Gruppe 1");
-				gruppe.put("url", "http://test.de/informatik/1/g1");
-				
-				JSONObject tag = new JSONObject();
-				tag.put("name", "Montag");
-				tag.put("anzKurse", 1);
-				
-				JSONObject kurs = new JSONObject();
-				kurs.put("name", "Java Enterprise Application");
-				kurs.put("url", "http://test.de/informatik/1/g1/jee");
-				kurs.put("dozent", "Stefan Pratsch");
-				kurs.put("raum", "223");
-				kurs.put("startTime", "8:00");
-				kurs.put("endTime", "12:00");
-				tag.put("leaf", true);
-
-				tag.append("items", kurs);
-				gruppe.append("items", tag);
-				semester.append("items", gruppe);
-				fachbereich.append("items",semester);
-				
-				root.append("items", fachbereich);
-				
-				fachbereich = new JSONObject();
-				fachbereich.put("name", "BWL2");
-				fachbereich.put("url", "http://test.de/bwl");
-				
-				semester = new JSONObject();
-				semester.put("name", "1. Semester");
-				semester.put("url", "http://test.de/bwl/1/");
-				
-				gruppe = new JSONObject();
-				gruppe.put("name", "Gruppe 1");
-				gruppe.put("url", "http://test.de/bwl/1/g1");
-				
-				tag = new JSONObject();
-				tag.put("name", "Montag");
-				tag.put("anzKurse", 1);
-				
-				kurs = new JSONObject();
-				kurs.put("name", "BWL");
-				kurs.put("url", "http://test.de/bwl/1/g1/jee");
-				kurs.put("dozent", "Herr Görmer");
-				kurs.put("raum", "223");
-				kurs.put("startTime", "8:00");
-				kurs.put("endTime", "12:00");
-				tag.put("leaf", true);
-
-				tag.append("items", kurs);
-				gruppe.append("items", tag);
-				semester.append("items", gruppe);
-				fachbereich.append("items",semester);
-				
-				root.append("items", fachbereich);
-				 
-				//root.put("date", new Date(System.currentTimeMillis()));
-				//root.put("url", "http://test.de/");
-				
-				*/
 				/*
 				JSONObject fachbereich = new JSONObject();
 				fachbereich.put("name", "Informatik");
