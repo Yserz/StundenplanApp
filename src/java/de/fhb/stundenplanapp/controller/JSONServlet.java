@@ -47,116 +47,6 @@ public class JSONServlet extends HttpServlet {
 		try {
 			
 			try {
-				/*
-				JSONObject fachbereich = new JSONObject();
-				fachbereich.put("name", "Informatik");
-				fachbereich.put("model", "Fachbereich");
-				fachbereich.put("url", "http://test.de/informatik");
-				fachbereich.put("leaf", false);
-				
-				JSONObject semester = new JSONObject();
-				semester.put("name", "1. Semester");
-				semester.put("model", "Semester");
-				semester.put("url", "http://test.de/informatik/1/");
-				semester.put("leaf", false);
-				
-				JSONObject gruppe = new JSONObject();
-				gruppe.put("name", "Gruppe 1");
-				gruppe.put("model", "Gruppe");
-				gruppe.put("url", "http://test.de/informatik/1/g1");
-				gruppe.put("leaf", false);
-				
-				JSONObject tag = new JSONObject();
-				tag.put("name", "Montag");
-				tag.put("model", "Tag");
-				tag.put("anzKurse", 1);
-				tag.put("leaf", false);
-				
-				JSONObject kurs2 = new JSONObject();
-				kurs2.put("name", "BWL");
-				kurs2.put("model", "Kurs");
-				kurs2.put("url", "http://test.de/informatik/1/g1/bwl");
-				kurs2.put("dozent", "Herr Görmer");
-				kurs2.put("raum", "223");
-				kurs2.put("startTime", "1200");
-				kurs2.put("endTime", "14:00");
-				kurs2.put("leaf", true);
-				
-				tag.append("items", kurs2);
-				
-				JSONObject kurs3 = new JSONObject();
-				kurs3.put("name", "Programmieren I");
-				kurs3.put("model", "Kurs");
-				kurs3.put("url", "http://test.de/informatik/1/g1/p1");
-				kurs3.put("dozent", "Frau Schmidt");
-				kurs3.put("raum", "223");
-				kurs3.put("startTime", "500");
-				kurs3.put("endTime", "14:00");
-				kurs3.put("leaf", true);
-				
-				tag.append("items", kurs3);
-				
-				JSONObject kurs = new JSONObject();
-				kurs.put("name", "Java Enterprise Application");
-				kurs.put("model", "Kurs");
-				kurs.put("url", "http://test.de/informatik/1/g1/jee");
-				kurs.put("dozent", "Stefan Pratsch");
-				kurs.put("raum", "223");
-				kurs.put("startTime", "800");
-				kurs.put("endTime", "12:00");
-				kurs.put("leaf", true);
-
-				tag.append("items", kurs);
-				
-				
-				gruppe.append("items", tag);
-				semester.append("items", gruppe);
-				fachbereich.append("items",semester);
-				
-				root.append("items", fachbereich);
-				
-				fachbereich = new JSONObject();
-				fachbereich.put("name", "BWL2");
-				fachbereich.put("model", "Fachbereich");
-				fachbereich.put("url", "http://test.de/bwl");
-				fachbereich.put("leaf", false);
-				
-				semester = new JSONObject();
-				semester.put("name", "1. Semester");
-				semester.put("model", "Semester");
-				semester.put("url", "http://test.de/bwl/1/");
-				semester.put("leaf", false);
-				
-				gruppe = new JSONObject();
-				gruppe.put("name", "Gruppe 1");
-				gruppe.put("model", "Gruppe");
-				gruppe.put("url", "http://test.de/bwl/1/g1");
-				gruppe.put("leaf", false);
-				
-				tag = new JSONObject();
-				tag.put("name", "Montag");
-				tag.put("model", "Tag");
-				tag.put("anzKurse", 1);
-				tag.put("leaf", false);
-				
-				kurs = new JSONObject();
-				kurs.put("name", "BWL");
-				kurs.put("model", "Kurs");
-				kurs.put("url", "http://test.de/bwl/1/g1/jee");
-				kurs.put("dozent", "Herr Görmer");
-				kurs.put("raum", "223");
-				kurs.put("startTime", "8:00");
-				kurs.put("endTime", "12:00");
-				kurs.put("leaf", true);
-
-				tag.append("items", kurs);
-				gruppe.append("items", tag);
-				semester.append("items", gruppe);
-				fachbereich.append("items",semester);
-				
-				root.append("items", fachbereich);
-				//json.append("comment", new JSONObject(comment));
-				*/
 		
 				if (root == null){
 					getStundenplanJSON();
@@ -171,6 +61,7 @@ public class JSONServlet extends HttpServlet {
 			
 			try {
 				//forward(req, resp, "/snippet.jsp");
+				response.setCharacterEncoding("utf-8");
 				response.getWriter().println(root);
 			} catch (IOException e) {
 				//Konnte JSON nicht senden!
@@ -219,6 +110,7 @@ public class JSONServlet extends HttpServlet {
 		return "Short description";
 	}// </editor-fold>
 	
+	@Schedule(minute="0", hour="8")
 	public void getStundenplanJSON() throws JSONException{
 		List<Fachbereich> fbs = new StundenPlanParser().getFachbereiche();
 		
