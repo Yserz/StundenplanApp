@@ -171,6 +171,7 @@ public class JSONServlet extends HttpServlet {
 			
 			try {
 				//forward(req, resp, "/snippet.jsp");
+				response.setCharacterEncoding("utf-8");
 				response.getWriter().println(root);
 			} catch (IOException e) {
 				//Konnte JSON nicht senden!
