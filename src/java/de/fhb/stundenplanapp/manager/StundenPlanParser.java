@@ -30,7 +30,7 @@ public class StundenPlanParser {
 
 	public List<Fachbereich> getFachbereiche() {
 		try {
-			URL u = new URL(url + "Stundenplan/ws1112/liste-zu.html");
+			URL u = new URL(url + "Stundenplan/ss12/liste-zu.html");
 			InputStream is = u.openStream();
 			DataInputStream dis = new DataInputStream(new BufferedInputStream(is));
 			findTable(dis);

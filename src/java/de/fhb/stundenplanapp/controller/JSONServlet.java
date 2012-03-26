@@ -3,7 +3,6 @@ package de.fhb.stundenplanapp.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.ejb.Schedule;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -110,7 +109,6 @@ public class JSONServlet extends HttpServlet {
 		return "Short description";
 	}// </editor-fold>
 	
-	@Schedule(minute="0", hour="8")
 	public void getStundenplanJSON() throws JSONException{
 		List<Fachbereich> fbs = new StundenPlanParser().getFachbereiche();
 		
